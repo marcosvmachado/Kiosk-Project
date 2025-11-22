@@ -1,3 +1,5 @@
+"use client"
+
 import { divFlexStyle, divInputStyle, inputStyle, divTableTitleStyle } from "@/data/styles/style"
 
 type Props = {

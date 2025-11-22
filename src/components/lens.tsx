@@ -1,3 +1,5 @@
+"use client"
+
 import { lensOptions } from "@/data/lenses"
 import { AddItem } from "./addItem"
 import { FilterBar } from "./filterBar"

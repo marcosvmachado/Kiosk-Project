@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { FormStructure } from "@/components/Login/formStructure"
 import { LoginArea } from "@/components/Login/LoginArea"
