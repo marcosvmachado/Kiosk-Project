@@ -26,23 +26,7 @@ export const Lenses = () => {
 
     const handleFilterButton = () => {
         
-        if ( lensCtx?.toDate.trim() === ''){
-            alert('INSIRA A DATA')
-            return
-        }
-        
-        
-        setLenses(prev => prev.filter(item => {
-            const itemDate = new Date(item.date)
-            const from = new Date(lensCtx?.fromDate!)
-            const to = new Date(lensCtx?.toDate!)
-
-             return (
-                (!from || itemDate >= from) &&
-                (!to || itemDate <= to)
-        )
-
-        })) 
+    alert("Funcionalidade ainda não disponível!")
 
     }
 
@@ -75,7 +59,7 @@ export const Lenses = () => {
                 category: categoryValue,
                 completed: false,
                 diopter: diopterValue,
-                id: lenses.length + 1
+                id: lenses.length 
             }])
             setDateValue('')
             setNameValue('')
