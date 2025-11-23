@@ -1,5 +1,3 @@
-"use client"
-
 import { divFlexStyle, divTableBodyStyle } from "@/data/styles/style"
 import { ItemHeader } from "./itemHeader"
 import { AddItem } from "./addItem"

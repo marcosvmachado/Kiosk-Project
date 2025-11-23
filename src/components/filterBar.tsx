@@ -1,5 +1,3 @@
-"use client"
-
 import { useLensContext } from "@/Contexts/lensContext"
 
 type Props = {

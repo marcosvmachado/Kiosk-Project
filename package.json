@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export",
-    "predeploy": "npm run build && npm run export",
-    "deploy": "gh-pages -d out"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.3.4",
@@ -21,11 +18,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.1.10",
     "typescript": "^5"
-  },
-  "homepage": "https://seu-usuario.github.io/kiosk-project",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+  }
 }

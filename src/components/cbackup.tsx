@@ -1,5 +1,3 @@
-
-
 export const Lenses = () => {
     
     const divInputStyle = "w-full mx-[4px] h-[35%] border-1 border-black"

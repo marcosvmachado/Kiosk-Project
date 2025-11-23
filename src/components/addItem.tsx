@@ -1,5 +1,3 @@
-"use client"
-
 import { divFlexStyle, divInputStyle, inputStyle } from "@/data/styles/style"
 import { useState } from "react"
 
