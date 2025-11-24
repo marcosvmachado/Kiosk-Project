@@ -4,25 +4,19 @@ import { FormStructure } from "@/components/Login/formStructure"
 import { LoginArea } from "@/components/Login/LoginArea"
 import { Layout } from "@/components/Layout"
 import { RegisterArea } from "@/components/Login/RegisterArea"
-import { Lenses } from "@/app/Pages/lens/page"
-import { Called } from "@/app/Pages/called/page"
+import { Lenses } from "@/app/pages/lens/page"
+import { Called } from "@/app/pages/called/page"
 import { LensProvider } from "@/Contexts/lensContext"
+import { redirect } from "next/navigation"
 
 const Page = () => {
 
-  const isLogged = true
+ 
   
   return (
 
-    <div>
+    redirect("/pages/home")
 
-     {isLogged ? <Layout activePage="Acomp. de Lentes" children={
-      <LensProvider>   
-        <Lenses/>
-      </LensProvider>
-      }/> : <LoginArea/>}
-  
-    </div>
   )
 
 }

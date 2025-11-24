@@ -1,6 +1,6 @@
 'use client'
 
-import { lensOptions } from "@/data/lenses"
+import { calledOptions, lensOptions } from "@/data/lenses"
 import { AddItem } from "../../../components/addItem"
 import { FilterBar } from "../../../components/filterBar"
 import { ItemHeader } from "../../../components/itemHeader"
@@ -26,7 +26,7 @@ export const Called = () => {
     const [reasonValue, setReasonValue] = useState("")
     
     const handleFilterButton = () => {
-
+        alert("Funcionalidade ainda não disponível!")
     }
     const handleAddButton = () => {
        
@@ -59,7 +59,7 @@ export const Called = () => {
                 titlePage={"ACOMPANHAMENTO DE CHAMADOS"}
 
                 filterBar={<FilterBar
-                    selectedOptions={lensOptions}
+                    selectedOptions={calledOptions}
                     onFilter={handleFilterButton}
                 />}
 
@@ -70,7 +70,7 @@ export const Called = () => {
                             <div className={divFlexStyle}>
                                 <div className={divInputStyle}>
                                     <input 
-                                    type="text" className={inputStyle} 
+                                    type="date" className={inputStyle} 
                                     placeholder="DATA..." 
                                     value={dateValue}
                                     onChange={e => setDateValue(e.target.value)}
@@ -181,3 +181,4 @@ export const Called = () => {
         </>
     )
 }
+export default Called

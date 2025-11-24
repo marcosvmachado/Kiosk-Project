@@ -1,4 +1,4 @@
-
+'use client'
 
 import { lensOptions } from "@/data/lenses"
 import { AddItem } from "../../../components/addItem"
@@ -220,3 +220,5 @@ export const Lenses = () => {
         </>
     )
 }
+
+export default Lenses

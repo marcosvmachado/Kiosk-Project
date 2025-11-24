@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
 type Props = {
@@ -6,19 +9,20 @@ type Props = {
     activePage?: string
 }
 
-export const Layout = ({ activePage, children }: Props) => {
+export const Layout1 = ({ activePage, children }: Props) => {
 
+    const pathname = usePathname()
+   
     const menuItemStyle = "px-[10px] py-[5px] font-bold hover:bg-[#ffb200] cursor-pointer"
     {/* const pages = ["Página Inicial", "Acomp. de Chamados", "Acomp. de Lentes", "Pós venda"]*/}
     const pages = [
-        {pageName: 'Página Inicial', route: ''},
-        {pageName: 'Acomp. de Chamados', route: 'Pages/called'},
-        {pageName: 'Acomp. de Lentes', route: 'Pages/lens'},
-        {pageName: 'Pós venda', route: 'Pages/afterSale'},
+        {pageName: 'Página Inicial', route: '/pages/home'},
+        {pageName: 'Acomp. de Chamados', route: '/pages/called'},
+        {pageName: 'Acomp. de Lentes', route: '/pages/lens'},
+        {pageName: 'Pós venda', route: '/pages/afterSale'},
     ]
 
     return (
-        
         <div className="w-screen h-screen bg-white flex flex-col">
             <div className="flex-2 flex bg-[#1e3a5f]">
                 <div className="flex justify-center w-full h-full">
@@ -30,9 +34,12 @@ export const Layout = ({ activePage, children }: Props) => {
                         <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Acomp. de Lentes</li>
                         <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Pós venda</li>
                         */} 
-                                {pages.map(item => (
-                                    <li key={item.pageName} className={`${menuItemStyle} ${activePage === item.pageName ? 'bg-[#ffb200]' : ''}`}><Link href={item.route}>{item.pageName}</Link></li>
-                                ))}
+                                {pages.map((item) => {
+                                    const isActive = pathname === item.route
+                                    return (
+                                        <li key={item.pageName} className={`${menuItemStyle} ${isActive ? 'bg-[#ffb200]' : ''}`}><Link href={item.route}>{item.pageName}</Link></li>
+                                    )
+                                })}
                                     
                     </ul>
                    </div>
@@ -42,7 +49,11 @@ export const Layout = ({ activePage, children }: Props) => {
             <div className="flex-18 mt-5">
                 {children}
             </div>
+            <div className="w-full h-[4px] bg-black"></div>
+            <div className="h-[5%] w-full bg-[#1e3a5f] flex justify-center items-center">
+                <span className="">Develop by Marquito do Rolimã</span>
+            </div>
         </div>
     )
 }
-export default Layout
+export default Layout1
