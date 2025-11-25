@@ -13,7 +13,7 @@ export const AddItem = ( { onAdd, inputs} : Props ) => {
         <>
             {inputs}        
             <div className="flex-1 flex justify-center items-center">
-                <div className="w-[90%] h-[35%]">
+                <div className="w-[90%] h-[50%]">
                     <button onClick={onAdd} className="bg-blue-500 rounded-md cursor-pointer w-full h-full font-bold">ADICIONAR</button>
                 </div>
             </div>

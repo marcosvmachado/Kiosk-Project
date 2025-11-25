@@ -6,7 +6,8 @@ import { FilterBar } from "../../../components/filterBar"
 import { ItemHeader } from "../../../components/itemHeader"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/data/styles/style"
 import { LayoutPage } from "../../../components/layoutPage"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { redirect, useRouter } from "next/navigation"
 
 export const Called = () => {
 
@@ -51,9 +52,20 @@ export const Called = () => {
     
     }
 
-    return (
+    const router = useRouter()
 
+    return (
+        
         <>
+            {
+                
+                useEffect(() => {
+                alert("Página ainda não disponível");
+                router.push("/pages/home");
+                }, [])
+
+            }
+            
             <LayoutPage
 
                 titlePage={"PÓS VENDA"}

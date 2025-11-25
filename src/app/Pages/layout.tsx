@@ -23,7 +23,7 @@ export const Layout1 = ({ activePage, children }: Props) => {
     ]
 
     return (
-        <div className="w-screen h-screen bg-white flex flex-col">
+        <div className="w-screen h-screen flex flex-col">
             <div className="flex-2 flex bg-[#1e3a5f]">
                 <div className="flex justify-center w-full h-full">
                    <div className="container flex">
@@ -46,7 +46,7 @@ export const Layout1 = ({ activePage, children }: Props) => {
                 </div>         
             </div>
             <div className="w-full h-[4px] bg-black"></div>
-            <div className="flex-18 mt-5">
+            <div className="flex-18">
                 {children}
             </div>
             <div className="w-full h-[4px] bg-black"></div>

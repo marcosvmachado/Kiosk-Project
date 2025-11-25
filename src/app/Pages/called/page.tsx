@@ -56,7 +56,7 @@ export const Called = () => {
         <>
             <LayoutPage
 
-                titlePage={"ACOMPANHAMENTO DE CHAMADOS"}
+                titlePage={"ACOMPANHAMEN. DE CHAMADOS"}
 
                 filterBar={<FilterBar
                     selectedOptions={calledOptions}
@@ -127,8 +127,8 @@ export const Called = () => {
                                 <div className={divInputStyle}>
                                     <select name="" id="" className="text-gray-500 w-full h-full">
                                         <option value="">CATEGORIA...</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                        <option value="GRAU">GRAU</option>
+                                        <option value="SOLAR">SOLAR</option>
                                     </select>
                                 </div>
                             </div>

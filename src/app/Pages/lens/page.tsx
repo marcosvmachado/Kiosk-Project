@@ -6,7 +6,7 @@ import { FilterBar } from "../../../components/filterBar"
 import { ItemHeader } from "../../../components/itemHeader"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/data/styles/style"
 import { LayoutPage } from "../../../components/layoutPage"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Lens } from "@/type/lens"
 import { useLensContext } from "@/Contexts/lensContext"
 
@@ -68,16 +68,32 @@ export const Lenses = () => {
             setLensValue('')
             setDiopterValue('')
             setCategoryValue('')
+
         }
 
     }
+    
+    useEffect(() => {
+
+        localStorage.setItem('lentes', JSON.stringify(lenses))
+
+    },[lenses])
+    
+    useEffect(() => {
+        const saved = localStorage.getItem("lentes")
+
+        if(saved) {
+            setLenses(JSON.parse(saved))
+        }
+
+    },[])
 
     return (
 
         <>
             <LayoutPage
 
-                titlePage={"ACOMPANHAMENTO DE LENTES"}
+                titlePage={"ACOMPANHAMEN. DE LENTES"}
 
                 filterBar={<FilterBar
                     selectedOptions={lensOptions}
