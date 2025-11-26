@@ -6,31 +6,28 @@ import { FilterBar } from "../../../components/filterBar"
 import { ItemHeader } from "../../../components/itemHeader"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/data/styles/style"
 import { LayoutPage } from "../../../components/layoutPage"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { CalledType } from "@/type/called"
 
 export const Called = () => {
 
-    const [called, setCalled] = useState([{
-    date: "24/08/2025",
-    name: "Jõao",
-    phone: "(67)99317-8257",
-    protocol: "45678",
-    reason: "Chillivision Prime Blue 1.59",
-    category: 'Grau'
-    }])
+    const [called, setCalled] = useState<CalledType[]>([])
+
+   
     
     const [dateValue, setDateValue] = useState("")
     const [nameValue, setNameValue] = useState("")
     const [phoneValue, setPhoneValue] = useState("")
     const [protocolValue, setProtocolValue] = useState("")
     const [reasonValue, setReasonValue] = useState("")
+    const [categoryValue, setCategoryValue] = useState("")
     
     const handleFilterButton = () => {
         alert("Funcionalidade ainda não disponível!")
     }
     const handleAddButton = () => {
        
-        if (dateValue.trim() || nameValue.trim() || phoneValue.trim() || protocolValue.trim() || reasonValue.trim() === ''){
+        if ([dateValue, nameValue, phoneValue, reasonValue, categoryValue].some(e => e.trim() === '')){
             alert("PREENCHA TODOS OS CAMPOS!")
         } else {
             setCalled(prev => [...prev, {
@@ -39,7 +36,9 @@ export const Called = () => {
                 phone: phoneValue,
                 protocol: protocolValue,
                 reason: reasonValue,
-                category: ''
+                completed: false,
+                id: called.length,
+                category: categoryValue
             }])
        } 
     
@@ -48,9 +47,26 @@ export const Called = () => {
        setPhoneValue('')
        setProtocolValue('')
        setReasonValue('')
+       setCategoryValue('')
     
     }
 
+    useEffect(() => {
+
+    const saved = localStorage.getItem("CalledStorage")
+
+    if (saved) { 
+    setCalled(JSON.parse(saved)) 
+    }
+
+    },[])
+    
+    useEffect(() => {
+
+    localStorage.setItem("CalledStorage", JSON.stringify(called))
+
+    },[called])
+   
     return (
 
         <>
@@ -125,7 +141,7 @@ export const Called = () => {
 
                             <div className={divFlexStyle}>
                                 <div className={divInputStyle}>
-                                    <select name="" id="" className="text-gray-500 w-full h-full">
+                                    <select name="" id="" className="text-gray-500 w-full h-full" value={categoryValue} onChange={e => setCategoryValue(e.target.value) } >
                                         <option value="">CATEGORIA...</option>
                                         <option value="GRAU">GRAU</option>
                                         <option value="SOLAR">SOLAR</option>

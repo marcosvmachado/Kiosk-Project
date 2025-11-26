@@ -24,7 +24,7 @@ export const Lenses = () => {
     const [categoryValue, setCategoryValue] = useState("")
     const [diopterValue, setDiopterValue] = useState("")
 
-    const handleFilterButton = () => {
+    const handleFilterButton = () => { 
         
     alert("Funcionalidade ainda não disponível!")
 
@@ -75,18 +75,20 @@ export const Lenses = () => {
     
     useEffect(() => {
 
-        localStorage.setItem('lentes', JSON.stringify(lenses))
-
-    },[lenses])
-    
-    useEffect(() => {
-        const saved = localStorage.getItem("lentes")
+        const saved = localStorage.getItem('lentes')
 
         if(saved) {
             setLenses(JSON.parse(saved))
         }
 
     },[])
+    
+    useEffect(() => {
+
+        localStorage.setItem('lentes', JSON.stringify(lenses))
+
+    },[lenses])
+    
 
     return (
 
