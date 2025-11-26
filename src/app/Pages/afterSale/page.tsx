@@ -26,14 +26,7 @@ export const AfterSale = () => {
     return (
         
         <>
-            {
-                
-                useEffect(() => {
-                alert("Página ainda não disponível");
-                router.push("/pages/home");
-                }, [])
-
-            }
+      
             
             <LayoutPage
 
