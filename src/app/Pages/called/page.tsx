@@ -12,9 +12,7 @@ import { CalledType } from "@/type/called"
 export const Called = () => {
 
     const [called, setCalled] = useState<CalledType[]>([])
-
-   
-    
+ 
     const [dateValue, setDateValue] = useState("")
     const [nameValue, setNameValue] = useState("")
     const [phoneValue, setPhoneValue] = useState("")

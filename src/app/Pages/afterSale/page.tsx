@@ -9,47 +9,16 @@ import { LayoutPage } from "../../../components/layoutPage"
 import { useEffect, useState } from "react"
 import { redirect, useRouter } from "next/navigation"
 
-export const Called = () => {
+export const AfterSale = () => {
 
-    const [called, setCalled] = useState([{
-    date: "24/08/2025",
-    name: "Jõao",
-    phone: "(67)99317-8257",
-    protocol: "45678",
-    reason: "Chillivision Prime Blue 1.59",
-    category: 'Grau'
-    }])
+   const [afterSale, setAfterSale] = useState<string[]>([])
     
-    const [dateValue, setDateValue] = useState("")
-    const [nameValue, setNameValue] = useState("")
-    const [phoneValue, setPhoneValue] = useState("")
-    const [protocolValue, setProtocolValue] = useState("")
-    const [reasonValue, setReasonValue] = useState("")
     
     const handleFilterButton = () => {
 
     }
     const handleAddButton = () => {
        
-        if (dateValue.trim() || nameValue.trim() || phoneValue.trim() || protocolValue.trim() || reasonValue.trim() === ''){
-            alert("PREENCHA TODOS OS CAMPOS!")
-        } else {
-            setCalled(prev => [...prev, {
-                date: dateValue,
-                name: nameValue,
-                phone: phoneValue,
-                protocol: protocolValue,
-                reason: reasonValue,
-                category: ''
-            }])
-       } 
-    
-       setDateValue('')
-       setNameValue('')
-       setPhoneValue('')
-       setProtocolValue('')
-       setReasonValue('')
-    
     }
 
     const router = useRouter()
@@ -84,8 +53,7 @@ export const Called = () => {
                                     <input 
                                     type="date" className={inputStyle} 
                                     placeholder="DATA..." 
-                                    value={dateValue}
-                                    onChange={e => setDateValue(e.target.value)}
+                                    
                                     />
                                 </div>
                             </div>
@@ -96,8 +64,7 @@ export const Called = () => {
                                     type="text" 
                                     className={inputStyle} 
                                     placeholder="NOME DO CLIENTE..." 
-                                    value={nameValue}
-                                    onChange={e => setNameValue(e.target.value)}
+                                   
                                     />
                                 </div>
                             </div>
@@ -107,8 +74,7 @@ export const Called = () => {
                                     <input 
                                     type="text" className={inputStyle} 
                                     placeholder="TELEFONE..." 
-                                    value={phoneValue}
-                                    onChange={e => setPhoneValue(e.target.value)}
+                                    
                                     />
                                 </div>
                             </div>
@@ -128,8 +94,7 @@ export const Called = () => {
                                     <input 
                                     type="text" className={inputStyle} 
                                     placeholder="COMPLEMENTO..." 
-                                    value={reasonValue}
-                                    onChange={e => setReasonValue(e.target.value)}
+                                   
                                     />
                                 </div>
                             </div>
@@ -155,30 +120,30 @@ export const Called = () => {
                 />}
 
                 itemRender={
-                    called.map(item => (
+                    afterSale.map(item => (
                         <div className="w-full h-[30px] flex">
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.date}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.name}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.phone}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.protocol}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
-                                <div title={item.reason} className={divTableBodyStyle}>{item.reason}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.category}</div>
+                                <div className={divTableBodyStyle}></div>
                             </div>
 
                             <div className={divFlexStyle}>
@@ -193,4 +158,4 @@ export const Called = () => {
         </>
     )
 }
-export default Called
+export default AfterSale
