@@ -5,11 +5,10 @@ import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
 type Props = {
-    children?: ReactNode
-    activePage?: string
+    children: ReactNode
 }
 
-const Layout1 = ({ activePage, children }: Props) => {
+const Layout1 = ({ children }: Props) => {
 
     const pathname = usePathname()
    
