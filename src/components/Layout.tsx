@@ -6,7 +6,7 @@ type Props = {
     activePage?: string
 }
 
-const Layout = ({ activePage, children }: Props) => {
+export const Layout = ({ activePage, children }: Props) => {
 
     const menuItemStyle = "px-[10px] py-[5px] font-bold hover:bg-[#ffb200] cursor-pointer"
     {/* const pages = ["Página Inicial", "Acomp. de Chamados", "Acomp. de Lentes", "Pós venda"]*/}
