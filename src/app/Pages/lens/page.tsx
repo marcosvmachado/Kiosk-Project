@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { Lens } from "@/type/lens"
 import { useLensContext } from "@/Contexts/lensContext"
 
-export const Lenses = () => {
+const Lenses = () => {
 
     const lensCtx = useLensContext()
 
