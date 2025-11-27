@@ -9,7 +9,7 @@ type Props = {
     activePage?: string
 }
 
-export const Layout1 = ({ activePage, children }: Props) => {
+const Layout1 = ({ activePage, children }: Props) => {
 
     const pathname = usePathname()
    

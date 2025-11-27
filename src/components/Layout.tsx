@@ -45,4 +45,3 @@ export const Layout = ({ activePage, children }: Props) => {
         </div>
     )
 }
-export default Layout
