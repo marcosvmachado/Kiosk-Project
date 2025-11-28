@@ -4,7 +4,7 @@ import { calledOptions, lensOptions } from "@/data/lenses"
 import { AddItem } from "../../../components/addItem"
 import { FilterBar } from "../../../components/filterBar"
 import { ItemHeader } from "../../../components/itemHeader"
-import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/data/styles/style"
+import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/data/styles/style"
 import { LayoutPage } from "../../../components/layoutPage"
 import { useEffect, useState } from "react"
 import { CalledType } from "@/type/called"
@@ -49,6 +49,21 @@ const Called = () => {
     
     }
 
+        const handleCompletedButton = (name: string, id: number) => {
+        setCalled(prev => {
+            return prev.map((item, index) => {
+                if (index === id) {
+                    return { ...item, completed: true }
+                }
+                return item
+            })
+        })
+    }
+
+    const handleDeleteButton = (id: number) => {
+        setCalled(prev => prev.filter(item => item.id !== id))
+    }
+    
     useEffect(() => {
 
     const saved = localStorage.getItem("CalledStorage")
@@ -157,34 +172,37 @@ const Called = () => {
                 />}
 
                 itemRender={
-                    called.map(item => (
-                        <div className="w-full h-[30px] flex">
+                    called.map((item, index) => (
+                       <div className="w-full h-[30px] flex">
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.date}</div>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
                             </div>
+                       
+                             <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.name}</div>
+                            </div>
+                       
+                            <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.phone}</div>
+                             </div>
+                   
+                            <div className={divFlexStyle}>
+                                 <div title={item.protocol} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.protocol}</div>
+                             </div>
+                       
+                            <div className={divFlexStyle}>
+                                 <div title={item.reason} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.reason}</div>
+                            </div>
+                       
+                             <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.category}</div>
+                             </div>
 
                             <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.name}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.phone}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.protocol}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div title={item.reason} className={divTableBodyStyle}>{item.reason}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={divTableBodyStyle}>{item.category}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold">CONCLUIR</button>
+                                 {item.completed
+                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(index) }}>EXCLUIR</button>
+                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.name, index) }}>CONCLUIR</button>
+                                }
                             </div>
                         </div>
                     ))

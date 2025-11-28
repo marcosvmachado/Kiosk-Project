@@ -21,9 +21,11 @@ const Layout1 = ({ children }: Props) => {
         {pageName: 'Pós venda', route: '/pages/afterSale'},
     ]
 
+    const cor = 'bg-[#1e3a5f]'
+
     return (
         <div className="w-screen h-screen flex flex-col">
-            <div className="flex-2 flex bg-[#1e3a5f]">
+            <div className={`flex-2 flex ${cor}`}>
                 <div className="flex justify-center w-full h-full">
                    <div className="container flex">
                      <ul className="flex items-center">
@@ -49,7 +51,7 @@ const Layout1 = ({ children }: Props) => {
                 {children}
             </div>
             <div className="w-full h-[4px] bg-black"></div>
-            <div className="h-[5%] w-full bg-[#1e3a5f] flex justify-center items-center">
+            <div className={`h-[5%] w-full ${cor} flex justify-center items-center`}>
                 <span className="">Develop by Marquito do Rolimã</span>
             </div>
         </div>
