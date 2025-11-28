@@ -26,7 +26,7 @@ const Lenses = () => {
 
     const handleFilterButton = () => { 
         
-    alert("Funcionalidade ainda não disponível!")
+    alert("Funcionalidade ainda não isponível!")
 
     }
 
@@ -43,6 +43,7 @@ const Lenses = () => {
 
     const handleDeleteButton = (id: number) => {
         setLenses(prev => prev.filter(item => item.id !== id))
+        console.log("deletando o item:" + id)
     }
 
     const handleAddButton = () => {
