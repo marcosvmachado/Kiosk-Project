@@ -6,5 +6,5 @@ export type CalledType = {
     reason: string
     category: string
     completed: boolean
-    id: number
+    id: string
 }

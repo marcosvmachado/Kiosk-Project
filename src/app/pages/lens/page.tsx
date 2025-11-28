@@ -26,14 +26,14 @@ const Lenses = () => {
 
     const handleFilterButton = () => { 
         
-    alert("Funcionalidade ainda não isponível!")
+    alert("Funcionalidade ainda não disponível!")
 
     }
 
-    const handleCompletedButton = (name: string, id: number) => {
+    const handleCompletedButton = (id: string) => {
         setLenses(prev => {
             return prev.map((item, index) => {
-                if (index === id) {
+                if (item.id === id) {
                     return { ...item, completed: true }
                 }
                 return item
@@ -41,9 +41,8 @@ const Lenses = () => {
         })
     }
 
-    const handleDeleteButton = (id: number) => {
+    const handleDeleteButton = (id: string) => {
         setLenses(prev => prev.filter(item => item.id !== id))
-        console.log("deletando o item:" + id)
     }
 
     const handleAddButton = () => {
@@ -60,7 +59,7 @@ const Lenses = () => {
                 category: categoryValue,
                 completed: false,
                 diopter: diopterValue,
-                id: lenses.length 
+                id: crypto.randomUUID() 
             }])
             setDateValue('')
             setNameValue('')
@@ -226,8 +225,8 @@ const Lenses = () => {
 
                             <div className={divFlexStyle}>
                                 {item.completed
-                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(index) }}>EXCLUIR</button>
-                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.name, index) }}>CONCLUIR</button>
+                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
+                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
                                 }
                             </div>
                         </div>

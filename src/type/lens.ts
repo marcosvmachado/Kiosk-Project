@@ -7,5 +7,5 @@ export type Lens = {
     category: string
     completed: boolean
     diopter: string
-    id: number
+    id: string
 }

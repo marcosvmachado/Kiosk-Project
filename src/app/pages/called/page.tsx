@@ -25,7 +25,7 @@ const Called = () => {
     }
     const handleAddButton = () => {
        
-        if ([dateValue, nameValue, phoneValue, reasonValue, categoryValue].some(e => e.trim() === '')){
+        if ([dateValue, nameValue, phoneValue, protocolValue, reasonValue, categoryValue].some(e => e.trim() === '')){
             alert("PREENCHA TODOS OS CAMPOS!")
         } else {
             setCalled(prev => [...prev, {
@@ -35,7 +35,7 @@ const Called = () => {
                 protocol: protocolValue,
                 reason: reasonValue,
                 completed: false,
-                id: called.length,
+                id: crypto.randomUUID(),
                 category: categoryValue
             }])
        } 
@@ -49,10 +49,10 @@ const Called = () => {
     
     }
 
-        const handleCompletedButton = (name: string, id: number) => {
+        const handleCompletedButton = (id: string) => {
         setCalled(prev => {
-            return prev.map((item, index) => {
-                if (index === id) {
+            return prev.map((item) => {
+                if (item.id === id) {
                     return { ...item, completed: true }
                 }
                 return item
@@ -60,7 +60,7 @@ const Called = () => {
         })
     }
 
-    const handleDeleteButton = (id: number) => {
+    const handleDeleteButton = (id: string) => {
         setCalled(prev => prev.filter(item => item.id !== id))
     }
     
@@ -200,8 +200,8 @@ const Called = () => {
 
                             <div className={divFlexStyle}>
                                  {item.completed
-                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(index) }}>EXCLUIR</button>
-                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.name, index) }}>CONCLUIR</button>
+                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
+                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
                                 }
                             </div>
                         </div>
