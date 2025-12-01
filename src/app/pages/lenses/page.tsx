@@ -3,10 +3,10 @@
 import { AddItem } from "../../../components/AddItem"
 import { FilterBar } from "../../../components/FilterBar"
 import { TableHeaderRow } from "../../../components/TableHeaderRow"
+import { LayoutPage } from "@/components/LayoutPage"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/styles/style"
 import { useEffect, useState } from "react"
 import { LensType } from "@/types/lens"
-import { LayoutPage } from "@/components/LayoutPage"
 import { LensOptions } from "@/data/lenses"
 
 const Lenses = () => {

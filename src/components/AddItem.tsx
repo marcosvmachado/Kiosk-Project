@@ -13,6 +13,6 @@ export const AddItem = ( { onAdd, inputs} : Props ) => {
                     <button onClick={onAdd} className="bg-blue-500 rounded-md cursor-pointer w-full h-full font-bold">ADICIONAR</button>
                 </div>
             </div>
-            </>
+        </>
     )
 }

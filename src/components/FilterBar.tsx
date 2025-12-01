@@ -1,6 +1,5 @@
 import { useLensContext } from "@/Contexts/lensContext"
 
-
 type Props = {
     inputs?: { placeholder?: string, type: string }[]
     selectedOptions: string[]

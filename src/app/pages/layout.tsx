@@ -1,5 +1,6 @@
 "use client"
 
+import { menuItemStyle } from "@/styles/style"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
@@ -12,8 +13,6 @@ const Layout = ({ children }: Props) => {
 
     const pathname = usePathname()
    
-    const menuItemStyle = "px-[10px] py-[5px] font-bold hover:bg-[#ffb200] cursor-pointer"
-    {/* const pages = ["Página Inicial", "Acomp. de Chamados", "Acomp. de Lentes", "Pós venda"]*/}
     const pages = [
         {pageName: 'Página Inicial', route: '/pages/home'},
         {pageName: 'Acomp. de Chamados', route: '/pages/calls'},
@@ -32,8 +31,7 @@ const Layout = ({ children }: Props) => {
                                     return (
                                         <li key={item.pageName} className={`${menuItemStyle} ${isActive ? 'bg-[#ffb200]' : ''}`}><Link href={item.route}>{item.pageName}</Link></li>
                                     )
-                                })}
-                                    
+                                })}                      
                     </ul>
                    </div>
                 </div>         
