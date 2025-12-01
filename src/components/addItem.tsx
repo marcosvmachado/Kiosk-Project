@@ -1,7 +1,3 @@
-import { divFlexStyle, divInputStyle, inputStyle } from "@/data/styles/style"
-import { useState } from "react"
-
-
 type Props = {
     onAdd: () => void
     inputs: any

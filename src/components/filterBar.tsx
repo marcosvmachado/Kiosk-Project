@@ -1,4 +1,4 @@
-import { useLensContext } from "@/Contexts/lensContext"
+import { useLensContext } from "@/contexts/lensContext"
 
 type Props = {
     inputs?: { placeholder?: string, type: string }[]
@@ -33,11 +33,3 @@ const lensCtx = useLensContext()
     )
 }
 
-/*
-                <select name="" id="" className="outline-none">
-                    <option value="">SELECIONE A CATEGORIA</option>
-                    {selectedOptions?.map((item, index) => (
-                        <option value={item}>{item}</option>
-                    ))}
-                </select>
-*/

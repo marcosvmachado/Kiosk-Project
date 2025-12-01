@@ -1,0 +1,1 @@
+export const LensOptions = ["VISÃO SIMPLES","MULTIFOCAL"]

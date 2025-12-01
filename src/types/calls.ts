@@ -1,11 +1,10 @@
-export type Lens = {
+export type CallsType = {
     date: string
     name: string
     phone: string
-    order: string
-    lens: string
+    protocol: string
+    reason: string
     category: string
     completed: boolean
-    diopter: string
     id: string
 }

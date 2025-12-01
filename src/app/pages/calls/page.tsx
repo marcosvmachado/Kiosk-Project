@@ -1,17 +1,17 @@
 'use client'
 
-import { calledOptions, lensOptions } from "@/data/lenses"
-import { AddItem } from "../../../components/addItem"
-import { FilterBar } from "../../../components/filterBar"
-import { ItemHeader } from "../../../components/itemHeader"
-import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/data/styles/style"
-import { LayoutPage } from "../../../components/layoutPage"
+import { AddItem } from "../../../components/AddItem"
+import { FilterBar } from "../../../components/FilterBar"
+import { TableHeaderRow } from "../../../components/TableHeaderRow"
+import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/styles/style"
+import { LayoutPage } from "../../../components/LayoutPage"
 import { useEffect, useState } from "react"
-import { CalledType } from "@/type/called"
+import { CallsType } from "@/types/calls"
+import { callOptions } from "@/data/calls"
 
-const Called = () => {
+const Calls = () => {
 
-    const [called, setCalled] = useState<CalledType[]>([])
+    const [calls, setCalls] = useState<CallsType[]>([])
  
     const [dateValue, setDateValue] = useState("")
     const [nameValue, setNameValue] = useState("")
@@ -28,7 +28,7 @@ const Called = () => {
         if ([dateValue, nameValue, phoneValue, protocolValue, reasonValue, categoryValue].some(e => e.trim() === '')){
             alert("PREENCHA TODOS OS CAMPOS!")
         } else {
-            setCalled(prev => [...prev, {
+            setCalls(prev => [...prev, {
                 date: dateValue,
                 name: nameValue,
                 phone: phoneValue,
@@ -50,7 +50,7 @@ const Called = () => {
     }
 
         const handleCompletedButton = (id: string) => {
-        setCalled(prev => {
+        setCalls(prev => {
             return prev.map((item) => {
                 if (item.id === id) {
                     return { ...item, completed: true }
@@ -61,24 +61,24 @@ const Called = () => {
     }
 
     const handleDeleteButton = (id: string) => {
-        setCalled(prev => prev.filter(item => item.id !== id))
+        setCalls(prev => prev.filter(item => item.id !== id))
     }
     
     useEffect(() => {
 
-    const saved = localStorage.getItem("CalledStorage")
+    const saved = localStorage.getItem("CallsStorage")
 
     if (saved) { 
-    setCalled(JSON.parse(saved)) 
+    setCalls(JSON.parse(saved)) 
     }
 
     },[])
     
     useEffect(() => {
 
-    localStorage.setItem("CalledStorage", JSON.stringify(called))
+    localStorage.setItem("CallsStorage", JSON.stringify(calls))
 
-    },[called])
+    },[calls])
    
     return (
 
@@ -88,7 +88,7 @@ const Called = () => {
                 titlePage={"ACOMPANHAMEN. DE CHAMADOS"}
 
                 filterBar={<FilterBar
-                    selectedOptions={calledOptions}
+                    selectedOptions={callOptions}
                     onFilter={handleFilterButton}
                 />}
 
@@ -167,12 +167,12 @@ const Called = () => {
 
                 }
 
-                itemHeader={<ItemHeader
+                tableHeaderRow={<TableHeaderRow
                     titles={['DATA', 'NOME DO CLIENTE', 'TELEFONE', 'PROTOCOLO', 'MOTIVO', "CATEGORIA", 'CONCLUÍDO?']}
                 />}
 
-                itemRender={
-                    called.map((item, index) => (
+                tableBodyRow={
+                    calls.map((item, index) => (
                        <div className="w-full h-[30px] flex">
                             <div className={divFlexStyle}>
                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
@@ -208,9 +208,7 @@ const Called = () => {
                     ))
                 }
             />
-
-
         </>
     )
 }
-export default Called
+export default Calls

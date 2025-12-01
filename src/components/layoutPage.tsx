@@ -1,22 +1,12 @@
-import { divFlexStyle, divTableBodyStyle } from "@/data/styles/style"
-import { ItemHeader } from "./itemHeader"
-import { AddItem } from "./addItem"
-import { FilterBar } from "./filterBar"
-import { Component } from "react"
-
 type Props = {
     filterBar: React.ReactNode
     addItem: React.ReactNode
-    itemHeader: React.ReactNode
-    itemRender: any
+    tableHeaderRow: React.ReactNode
+    tableBodyRow: any
     titlePage: string
 }
 
-export const LayoutPage = ({ filterBar, addItem, itemHeader, itemRender, titlePage }: Props) => {
-
-    const handleFilterButton = () => {
-
-    }
+export const LayoutPage = ({ filterBar, addItem, tableHeaderRow, tableBodyRow, titlePage }: Props) => {
 
     return (
 
@@ -42,10 +32,10 @@ export const LayoutPage = ({ filterBar, addItem, itemHeader, itemRender, titlePa
 
                 <div className="flex-15 flex flex-col">
                     <div className="w-full h-[30px] flex">
-                        {itemHeader}
+                        {tableHeaderRow}
                     </div>
 
-                    {itemRender}
+                    {tableBodyRow}
 
                 </div>
 

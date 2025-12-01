@@ -1,10 +1,10 @@
-import { divFlexStyle, divInputStyle, inputStyle, divTableTitleStyle } from "@/data/styles/style"
+import { divFlexStyle, divTableTitleStyle } from "@/styles/style"
 
 type Props = {
     titles: string[]
 }
 
-export const ItemHeader = ( {titles}: Props ) => {
+export const TableHeaderRow = ( {titles}: Props ) => {
     return (
         <>
             {titles.map((item, index) => (

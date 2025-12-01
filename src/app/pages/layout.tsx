@@ -8,7 +8,7 @@ type Props = {
     children: ReactNode
 }
 
-const Layout1 = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
 
     const pathname = usePathname()
    
@@ -16,25 +16,17 @@ const Layout1 = ({ children }: Props) => {
     {/* const pages = ["Página Inicial", "Acomp. de Chamados", "Acomp. de Lentes", "Pós venda"]*/}
     const pages = [
         {pageName: 'Página Inicial', route: '/pages/home'},
-        {pageName: 'Acomp. de Chamados', route: '/pages/called'},
-        {pageName: 'Acomp. de Lentes', route: '/pages/lens'},
-        {pageName: 'Pós venda', route: '/pages/afterSale'},
+        {pageName: 'Acomp. de Chamados', route: '/pages/calls'},
+        {pageName: 'Acomp. de Lentes', route: '/pages/lenses'},
+        {pageName: 'Pós venda', route: '/pages/after-sale'},
     ]
-
-    const cor = 'bg-[#1e3a5f]'
 
     return (
         <div className="w-screen h-screen flex flex-col">
-            <div className={`flex-2 flex ${cor}`}>
+            <div className="flex-2 flex bg-[#1e3a5f]">
                 <div className="flex justify-center w-full h-full">
                    <div className="container flex">
                      <ul className="flex items-center">
-                        {/*    
-                        <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Página Inicial</li>
-                        <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Acomp. de Chamados</li>      
-                        <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Acomp. de Lentes</li>
-                        <li className={`${menuItemStyle} ${activePage === item ? 'bg-[#ffb200]' : ''}`}>Pós venda</li>
-                        */} 
                                 {pages.map((item) => {
                                     const isActive = pathname === item.route
                                     return (
@@ -51,10 +43,10 @@ const Layout1 = ({ children }: Props) => {
                 {children}
             </div>
             <div className="w-full h-[4px] bg-black"></div>
-            <div className={`h-[5%] w-full ${cor} flex justify-center items-center`}>
+            <div className="h-[5%] w-full bg-[#1e3a5f] flex justify-center items-center">
                 <span className="">Develop by Marquito do Rolimã</span>
             </div>
         </div>
     )
 }
-export default Layout1
+export default Layout

@@ -1,10 +1,11 @@
-export type CalledType = {
+export type LensType = {
     date: string
     name: string
     phone: string
-    protocol: string
-    reason: string
+    order: string
+    lens: string
     category: string
     completed: boolean
+    diopter: string
     id: string
 }

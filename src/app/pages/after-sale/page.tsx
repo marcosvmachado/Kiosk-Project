@@ -1,19 +1,18 @@
 'use client'
 
-import { lensOptions } from "@/data/lenses"
-import { AddItem } from "../../../components/addItem"
-import { FilterBar } from "../../../components/filterBar"
-import { ItemHeader } from "../../../components/itemHeader"
-import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/data/styles/style"
-import { LayoutPage } from "../../../components/layoutPage"
+import { AddItem } from "../../../components/AddItem"
+import { FilterBar } from "../../../components/FilterBar"
+import { TableHeaderRow } from "../../../components/TableHeaderRow"
+import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/styles/style"
+import { LayoutPage } from "../../../components/LayoutPage"
 import { useEffect, useState } from "react"
 import { redirect, useRouter } from "next/navigation"
+import { LensOptions } from "@/data/lenses"
 
 const AfterSale = () => {
 
    const [afterSale, setAfterSale] = useState<string[]>([])
-    
-    
+      
     const handleFilterButton = () => {
 
     }
@@ -40,7 +39,7 @@ const AfterSale = () => {
                 titlePage={"PÓS VENDA"}
 
                 filterBar={<FilterBar
-                    selectedOptions={lensOptions}
+                    selectedOptions={LensOptions}
                     onFilter={handleFilterButton}
                 />}
 
@@ -115,7 +114,8 @@ const AfterSale = () => {
 
                 }
 
-                itemHeader={<ItemHeader
+                tableHeaderRow={<TableHeaderRow
+                
                     titles={['DATA', 'NOME DO CLIENTE', 'TELEFONE', 'O QUE COMPROU ?', 'COMPLEMENTO ?', "FREQUÊNCIA", 'CONCLUÍDO?']}
                 />}
 
@@ -153,8 +153,6 @@ const AfterSale = () => {
                     ))
                 }
             />
-
-
         </>
     )
 }
