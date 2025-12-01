@@ -1,4 +1,5 @@
-import { useLensContext } from "@/contexts/lensContext"
+import { useLensContext } from "@/Contexts/lensContext"
+
 
 type Props = {
     inputs?: { placeholder?: string, type: string }[]
