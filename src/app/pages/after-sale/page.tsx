@@ -119,7 +119,7 @@ const AfterSale = () => {
                     titles={['DATA', 'NOME DO CLIENTE', 'TELEFONE', 'O QUE COMPROU ?', 'COMPLEMENTO ?', "FREQUÊNCIA", 'CONCLUÍDO?']}
                 />}
 
-                itemRender={
+                tableBodyRow={
                     afterSale.map(item => (
                         <div className="w-full h-[30px] flex">
                             <div className={divFlexStyle}>
