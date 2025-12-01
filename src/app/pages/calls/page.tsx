@@ -1,10 +1,10 @@
 'use client'
 
-import { AddItem } from "../../../components/AddItemt"
-import { FilterBar } from "../../../components/FilterBart"
+import { AddItem } from "../../../components/AddItem"
+import { FilterBar } from "../../../components/FilterBar"
 import { TableHeaderRow } from "../../../components/TableHeaderRow"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/styles/style"
-import { LayoutPage } from "../../../components/LayoutPaget"
+import { LayoutPage } from "../../../components/LayoutPage"
 import { useEffect, useState } from "react"
 import { CallsType } from "@/types/calls"
 import { callOptions } from "@/data/calls"

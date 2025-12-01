@@ -5,9 +5,9 @@ import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/st
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { LensOptions } from "@/data/lenses"
-import { FilterBar } from "@/components/FilterBart"
-import { LayoutPage } from "@/components/LayoutPaget"
-import { AddItem } from "@/components/AddItemt"
+import { FilterBar } from "@/components/FilterBar"
+import { LayoutPage } from "@/components/LayoutPage"
+import { AddItem } from "@/components/AddItem"
 
 const AfterSale = () => {
 
