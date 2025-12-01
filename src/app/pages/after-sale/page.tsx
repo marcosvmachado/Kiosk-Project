@@ -1,13 +1,13 @@
 'use client'
 
-import { AddItem } from "../../../components/AddItem"
-import { FilterBar } from "../../../components/FilterBar"
 import { TableHeaderRow } from "../../../components/TableHeaderRow"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle } from "@/styles/style"
-import { LayoutPage } from "../../../components/LayoutPage"
 import { useEffect, useState } from "react"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { LensOptions } from "@/data/lenses"
+import { FilterBar } from "@/components/FilterBart"
+import { LayoutPage } from "@/components/LayoutPaget"
+import { AddItem } from "@/components/AddItemt"
 
 const AfterSale = () => {
 
