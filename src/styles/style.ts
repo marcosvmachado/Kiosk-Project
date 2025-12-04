@@ -8,3 +8,9 @@ export const divTableBodyStyleCompleted = "font-bold bg-[#287e1d] w-full mx-[4px
     
 export const divFlexStyle = "flex-1 flex justify-center items-center min-w-0"
 
+export const fifteenDaysStyle = "bg-[#d1aa34]"
+export const threeMonthsStyle = "bg-[#cee1d8]"
+export const sixMonthsStyle = "bg-[#e0df9f]"
+export const nineMonthsStyle = "bg-[#ef7689]"
+export const oneYearStyle = "!bg-[#287e1d]"
+

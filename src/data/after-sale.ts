@@ -1,0 +1,1 @@
+export const afterSaleOptions = ["15 DIAS", "3 MESES", "6 MESES", "9 MESES", "1 ANO"]

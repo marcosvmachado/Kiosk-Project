@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
     ]
 
     return (
-        <div className="w-screen h-screen flex flex-col">
+        <div className="w-screen h-screen flex flex-col text-white">
             <div className="flex-2 flex bg-[#1e3a5f]">
                 <div className="flex justify-center w-full h-full">
                    <div className="container flex">

@@ -7,7 +7,7 @@ import { LayoutPage } from "@/components/LayoutPage"
 import { divFlexStyle, divInputStyle, inputStyle, divTableBodyStyle, divTableBodyStyleCompleted } from "@/styles/style"
 import { useEffect, useState } from "react"
 import { LensType } from "@/types/lens"
-import { LensOptions } from "@/data/lenses"
+import { lensOptions } from "@/data/lenses"
 
 const Lenses = () => {
 
@@ -95,7 +95,7 @@ const Lenses = () => {
                 titlePage={"ACOMPANHAMEN. DE LENTES"}
 
                 filterBar={<FilterBar
-                    selectedOptions={LensOptions}
+                    selectedOptions={lensOptions}
                     onFilter={handleFilterButton}
                 />}
 
