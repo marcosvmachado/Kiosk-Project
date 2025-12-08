@@ -1,4 +1,4 @@
-export const divInputStyle = "w-full mx-[4px] h-[50%] border-1 border-black"
+export const divInputStyle = "w-full mx-[4px] h-[50%] border-1 border-black flex"
 export const inputStyle = "text-black placeholder:text-gray-500 w-full h-full p-2 text-center"
 export const menuItemStyle = "px-[10px] py-[5px] font-bold hover:bg-[#ffb200] cursor-pointer"
     
