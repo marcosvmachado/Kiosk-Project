@@ -12,7 +12,7 @@ import { afterSaleOptions } from "@/data/after-sale"
 
 const AfterSale = () => {
 
-   const [afterSale, setAfterSale] = useState<afterSale[]>([])
+   const [afterSale, setAfterSale] = useState<afterSale[]>([ ])
        
    const [dateValue, setDateValue] = useState('')
    const [nameValue, setNameValue] = useState('')
