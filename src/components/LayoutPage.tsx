@@ -14,7 +14,7 @@ export const LayoutPage = ({ filterBar, addItem, tableHeaderRow, tableBodyRow, t
 
             <div className="w-full h-full flex flex-col container">
 
-                <div className="flex-3 flex justify-between items-center ">
+                <div className="flex-3 flex justify-between items-center">
 
                     <h1 className="font-extrabold text-2xl text-black">{titlePage}</h1>
 
@@ -30,13 +30,13 @@ export const LayoutPage = ({ filterBar, addItem, tableHeaderRow, tableBodyRow, t
                     {addItem}
                 </div>
 
-                <div className="flex-15 flex flex-col">
+                <div className="flex-15 flex flex-col min-h-0">
                     <div className="w-full h-[30px] flex">
                         {tableHeaderRow}
                     </div>
-
+                 <div className="overflow-auto my-1">
                     {tableBodyRow}
-
+                </div>
                 </div>
 
             </div>

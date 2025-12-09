@@ -37,7 +37,7 @@ const Layout = ({ children }: Props) => {
                 </div>         
             </div>
             <div className="w-full h-[4px] bg-black"></div>
-            <div className="flex-18">
+            <div className="flex-18 min-h-0">
                 {children}
             </div>
             <div className="w-full h-[4px] bg-black"></div>

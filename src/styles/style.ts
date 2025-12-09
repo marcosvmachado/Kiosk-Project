@@ -6,7 +6,7 @@ export const divTableTitleStyle = "w-full mx-[4px] bg-[#ffb200] text-center font
 export const divTableBodyStyle = "font-bold bg-[#494949] w-full mx-[4px] px-[10px] truncate text-center rounded"
 export const divTableBodyStyleCompleted = "font-bold bg-[#287e1d] w-full mx-[4px] truncate text-center rounded"
     
-export const divFlexStyle = "flex-1 flex justify-center items-center min-w-0"
+export const divFlexStyle = "flex-1 flex justify-center items-center"
 
 export const fifteenDaysStyle = "bg-[#d1aa34]"
 export const threeMonthsStyle = "bg-[#cee1d8]"
