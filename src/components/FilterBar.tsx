@@ -1,12 +1,15 @@
+
 import { useLensContext } from "@/Contexts/lensContext"
 
 type Props = {
     inputs?: { placeholder?: string, type: string }[]
     selectedOptions: string[]
     onFilter: () => void
+    value: string
+    setValue: ( item: string ) => void
 }
 
-export const FilterBar = ( {inputs, selectedOptions, onFilter}: Props ) => {
+export const FilterBar = ( { value, setValue, selectedOptions, onFilter}: Props ) => {
     
 const lensCtx = useLensContext()
 
@@ -20,7 +23,8 @@ const lensCtx = useLensContext()
                 
                 <select 
                 className="outline-none border-2 p-1 px-5 border-[#494949] rounded-md"
-                onChange={e => lensCtx?.setLensOption(e.target.value)}
+                value={value}
+                onChange={e => { setValue(e.target.value) }}
                 >
                     <option value="">SELECIONE A OPÇÃO:</option>
                     {selectedOptions?.map((item, index) => (
@@ -32,4 +36,5 @@ const lensCtx = useLensContext()
             </>
     )
 }
+
 

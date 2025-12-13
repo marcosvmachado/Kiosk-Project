@@ -13,6 +13,8 @@ const Lenses = () => {
 
     const [lenses, setLenses] = useState<LensType[]>([])
 
+    const [lensesFiltered, setLensesFiltered] = useState<LensType[]>([])
+
     const [dateValue, setDateValue] = useState("")
     const [nameValue, setNameValue] = useState("")
     const [phoneValue, setPhoneValue] = useState("")
@@ -21,10 +23,57 @@ const Lenses = () => {
     const [categoryValue, setCategoryValue] = useState("")
     const [diopterValue, setDiopterValue] = useState("")
 
-    const handleFilterButton = () => { 
-        
-    alert("Funcionalidade ainda não disponível!")
+    const [loaded, setLoaded] = useState(false)
 
+    const [filter, setFilter] = useState(false)
+
+    const [option, setOption] = useState("")
+
+    const renderTableBodyRow = (state: any) => {
+        return state.map((item: any, index: any) => (
+                        <div className="w-full h-[30px] flex">
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.name}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.phone}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.order}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div title={item.lens} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.lens}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div title={item.diopter} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>DIOPTRIA</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.category}</div>
+                            </div>
+
+                            <div className={divFlexStyle}>
+                                {item.completed
+                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
+                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
+                                }
+                            </div>
+                        </div>
+                    ))
+    }
+    
+    const handleFilterButton = () => { 
+    setLensesFiltered(lenses)
+    setLensesFiltered(prev => prev.filter(item => item.category === option))
+    setFilter(true)
     }
 
     const handleCompletedButton = (id: string) => {
@@ -36,10 +85,19 @@ const Lenses = () => {
                 return item
             })
         })
+        setLensesFiltered(prev => {
+            return prev.map((item, index) => {
+                if (item.id === id) {
+                    return { ...item, completed: true }
+                }
+                return item
+            })
+        })
     }
 
     const handleDeleteButton = (id: string) => {
         setLenses(prev => prev.filter(item => item.id !== id))
+        setLensesFiltered(prev => prev.filter(item => item.id !== id))
     }
 
     const handleAddButton = () => {
@@ -77,14 +135,14 @@ const Lenses = () => {
         if(saved) {
             setLenses(JSON.parse(saved))
         }
-
+        setLoaded(true)
     },[])
     
     useEffect(() => {
-
+        if (!loaded) return
         localStorage.setItem('lentes', JSON.stringify(lenses))
 
-    },[lenses])
+    },[lenses, loaded])
     
 
     return (
@@ -95,6 +153,8 @@ const Lenses = () => {
                 titlePage={"ACOMPANHAMEN. DE LENTES"}
 
                 filterBar={<FilterBar
+                    value={option}
+                    setValue={setOption}
                     selectedOptions={lensOptions}
                     onFilter={handleFilterButton}
                 />}
@@ -174,8 +234,8 @@ const Lenses = () => {
                                 <div className={divInputStyle}>
                                     <select name="" id="" className="text-gray-500 w-full h-full" value={categoryValue} onChange={e => setCategoryValue(e.target.value)}>
                                         <option value="">CATEGORIA...</option>
-                                        <option value="Visão Simples">Visão Simples</option>
-                                        <option value="Multifocal">Multifocal</option>
+                                        <option value="VISÃO SIMPLES">Visão Simples</option>
+                                        <option value="MULTIFOCAL">Multifocal</option>
                                     </select>
                                 </div>
                             </div>
@@ -190,44 +250,9 @@ const Lenses = () => {
                 />}
 
                 tableBodyRow={
-                    lenses.map((item, index) => (
-                        <div className="w-full h-[30px] flex">
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
-                            </div>
+                    
+                    filter ? renderTableBodyRow(lensesFiltered) : renderTableBodyRow(lenses)
 
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.name}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.phone}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.order}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div title={item.lens} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.lens}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div title={item.diopter} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>DIOPTRIA</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.category}</div>
-                            </div>
-
-                            <div className={divFlexStyle}>
-                                {item.completed
-                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
-                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
-                                }
-                            </div>
-                        </div>
-                    ))
                 }
             />
         </>

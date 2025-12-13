@@ -11,6 +11,10 @@ import { callOptions } from "@/data/calls"
 
 const Calls = () => {
 
+    const [filter, setFilter] = useState<boolean>(false)
+    
+    const [loaded, setLoaded] = useState(false)
+
     const [calls, setCalls] = useState<CallsType[]>([])
  
     const [dateValue, setDateValue] = useState("")
@@ -20,8 +24,14 @@ const Calls = () => {
     const [reasonValue, setReasonValue] = useState("")
     const [categoryValue, setCategoryValue] = useState("")
     
+    const [option, setOption] = useState("")
+
+    const [callsFiltered, setCallsFiltered] = useState<CallsType[]>([])
+ 
     const handleFilterButton = () => {
-        alert("Funcionalidade ainda não disponível!")
+        setCallsFiltered(calls)
+        setCallsFiltered(prev => prev.filter(item => item.category === option))
+        setFilter(true)
     }
     const handleAddButton = () => {
        
@@ -58,11 +68,57 @@ const Calls = () => {
                 return item
             })
         })
+        setCallsFiltered(prev => {
+            return prev.map((item) => {
+                if (item.id === id) {
+                    return { ...item, completed: true }
+                }
+                return item
+            })
+        })
     }
 
     const handleDeleteButton = (id: string) => {
         setCalls(prev => prev.filter(item => item.id !== id))
+        setCallsFiltered(prev => prev.filter(item => item.id !== id))    
     }
+    
+    const renderTableBodyRow = (state: any) => {
+        return state.map((item: any, index: any) => (
+                       <div className="w-full h-[30px] flex">
+                            <div className={divFlexStyle}>
+                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
+                            </div>
+                       
+                             <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.name}</div>
+                            </div>
+                       
+                            <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.phone}</div>
+                             </div>
+                   
+                            <div className={divFlexStyle}>
+                                 <div title={item.protocol} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.protocol}</div>
+                             </div>
+                       
+                            <div className={divFlexStyle}>
+                                 <div title={item.reason} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.reason}</div>
+                            </div>
+                       
+                             <div className={divFlexStyle}>
+                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.category}</div>
+                             </div>
+
+                            <div className={divFlexStyle}>
+                                 {item.completed
+                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
+                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
+                                }
+                            </div>
+                        </div>
+                    ))
+                }
     
     useEffect(() => {
 
@@ -71,14 +127,19 @@ const Calls = () => {
     if (saved) { 
     setCalls(JSON.parse(saved)) 
     }
-
+    setLoaded(true)
     },[])
     
     useEffect(() => {
 
+    if (!loaded) return
     localStorage.setItem("CallsStorage", JSON.stringify(calls))
+    },[calls, loaded])
 
-    },[calls])
+    useEffect(() => {
+        console.log('array original', calls)
+        console.log('array filtrado', callsFiltered)
+    },[callsFiltered])
    
     return (
 
@@ -88,6 +149,8 @@ const Calls = () => {
                 titlePage={"ACOMPANHAMEN. DE CHAMADOS"}
 
                 filterBar={<FilterBar
+                    value={option}
+                    setValue={setOption}
                     selectedOptions={callOptions}
                     onFilter={handleFilterButton}
                 />}
@@ -172,40 +235,10 @@ const Calls = () => {
                 />}
 
                 tableBodyRow={
-                    calls.map((item, index) => (
-                       <div className="w-full h-[30px] flex">
-                            <div className={divFlexStyle}>
-                                <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.date}</div>
-                            </div>
-                       
-                             <div className={divFlexStyle}>
-                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.name}</div>
-                            </div>
-                       
-                            <div className={divFlexStyle}>
-                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.phone}</div>
-                             </div>
-                   
-                            <div className={divFlexStyle}>
-                                 <div title={item.protocol} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.protocol}</div>
-                             </div>
-                       
-                            <div className={divFlexStyle}>
-                                 <div title={item.reason} className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.reason}</div>
-                            </div>
-                       
-                             <div className={divFlexStyle}>
-                                 <div className={`${item.completed ? `${divTableBodyStyleCompleted}` : `${divTableBodyStyle}`}`}>{item.category}</div>
-                             </div>
-
-                            <div className={divFlexStyle}>
-                                 {item.completed
-                                    ? <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleDeleteButton(item.id) }}>EXCLUIR</button>
-                                    : <button className="bg-blue-500 cursor-pointer w-full rounded-md mx-[4px] font-bold" onClick={() => { handleCompletedButton(item.id) }}>CONCLUIR</button>
-                                }
-                            </div>
-                        </div>
-                    ))
+                    
+                    filter 
+                            ? renderTableBodyRow(callsFiltered) 
+                            : renderTableBodyRow(calls) 
                 }
             />
         </>
