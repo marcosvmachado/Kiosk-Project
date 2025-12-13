@@ -1,1 +1,1 @@
-export const lensOptions = ["VISÃO SIMPLES","MULTIFOCAL"]
+export const lensOptions = ["Visão Simpes","Multifocal"]

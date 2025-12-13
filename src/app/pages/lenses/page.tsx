@@ -234,8 +234,8 @@ const Lenses = () => {
                                 <div className={divInputStyle}>
                                     <select name="" id="" className="text-gray-500 w-full h-full" value={categoryValue} onChange={e => setCategoryValue(e.target.value)}>
                                         <option value="">CATEGORIA...</option>
-                                        <option value="VISÃO SIMPLES">Visão Simples</option>
-                                        <option value="MULTIFOCAL">Multifocal</option>
+                                        <option value="Visão Simples">Visão Simples</option>
+                                        <option value="Multifocal">Multifocal</option>
                                     </select>
                                 </div>
                             </div>

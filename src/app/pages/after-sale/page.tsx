@@ -20,6 +20,8 @@ const AfterSale = () => {
    const [productValue, setProductValue] = useState('')
    const [complementValue, setComplementValue] = useState('')
 
+   const [option, setOption] = useState("")
+
    const handleFilterButton = () => {
 
     alert('Funcionalidade ainda não disponível!')
@@ -157,6 +159,8 @@ const AfterSale = () => {
                 titlePage={"PÓS VENDA"}
 
                 filterBar={<FilterBar
+                    value={option}
+                    setValue={setOption}
                     selectedOptions={afterSaleOptions}
                     onFilter={handleFilterButton}
                 />}
