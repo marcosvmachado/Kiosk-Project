@@ -6,6 +6,7 @@ export type afterSale = {
     complement: string,
     id: string,
     completed: boolean,
+    option: string
     initialButton: boolean,
     fifteenDays: boolean,
     threeMonths: boolean,

@@ -27,7 +27,11 @@ const Lenses = () => {
 
     const [filter, setFilter] = useState(false)
 
-    const [option, setOption] = useState("")
+    const [optionValue, setOptionValue] = useState("")
+
+    const [fromDateValue, setFromDateValue] = useState("")
+
+    const [toDateValue, setToDateValue] = useState("")
 
     const renderTableBodyRow = (state: any) => {
         return state.map((item: any, index: any) => (
@@ -72,8 +76,17 @@ const Lenses = () => {
     
     const handleFilterButton = () => { 
     setLensesFiltered(lenses)
-    setLensesFiltered(prev => prev.filter(item => item.category === option))
-    setFilter(true)
+        if(optionValue !== ''){
+            setLensesFiltered(prev => prev.filter(item => item.category === optionValue))
+        }
+        setFilter(true)
+
+        if(fromDateValue && toDateValue !== ''){
+            setLensesFiltered(prev => prev.filter(item => 
+            item.date >= fromDateValue 
+            &&
+            item.date <= toDateValue
+        ))}
     }
 
     const handleCompletedButton = (id: string) => {
@@ -153,8 +166,12 @@ const Lenses = () => {
                 titlePage={"ACOMPANHAMEN. DE LENTES"}
 
                 filterBar={<FilterBar
-                    value={option}
-                    setValue={setOption}
+                    fromDateValue={fromDateValue}
+                    setFromDateValue={setFromDateValue}
+                    toDateValue={toDateValue}
+                    setToDateValue={setToDateValue}
+                    optionValue={optionValue}
+                    setOptionValue={setOptionValue}
                     selectedOptions={lensOptions}
                     onFilter={handleFilterButton}
                 />}

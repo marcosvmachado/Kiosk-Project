@@ -5,26 +5,28 @@ type Props = {
     inputs?: { placeholder?: string, type: string }[]
     selectedOptions: string[]
     onFilter: () => void
-    value: string
-    setValue: ( item: string ) => void
+    optionValue: string
+    setOptionValue: ( item: string ) => void
+    fromDateValue: string
+    setFromDateValue: ( item: string ) => void
+    toDateValue: string
+    setToDateValue: ( item: string ) => void
 }
 
-export const FilterBar = ( { value, setValue, selectedOptions, onFilter}: Props ) => {
-    
-const lensCtx = useLensContext()
+export const FilterBar = ( { fromDateValue, setFromDateValue, toDateValue, setToDateValue, optionValue, setOptionValue, selectedOptions, onFilter}: Props ) => {
 
     return (          
             <>
                 <div>
-                    <input className="border-2 border-gray-500" type="date" value={lensCtx?.fromDate} onChange={e => lensCtx?.setFromDate(e.target.value)}/> 
+                    <input className="border-2 border-gray-500" type="date" value={fromDateValue} onChange={e => setFromDateValue(e.target.value)}/> 
                     <span className="mx-2">A</span> 
-                    <input className="border-2 border-gray-500" type="date" value={lensCtx?.toDate} onChange={e => lensCtx?.setToDate(e.target.value)}/>
+                    <input className="border-2 border-gray-500" type="date" value={toDateValue} onChange={e => setToDateValue(e.target.value)}/>
                 </div>
                 
                 <select 
                 className="outline-none border-2 p-1 px-5 border-[#494949] rounded-md"
-                value={value}
-                onChange={e => { setValue(e.target.value) }}
+                value={optionValue}
+                onChange={e => { setOptionValue(e.target.value) }}
                 >
                     <option value="">SELECIONE A OPÇÃO:</option>
                     {selectedOptions?.map((item, index) => (

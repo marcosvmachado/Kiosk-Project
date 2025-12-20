@@ -24,14 +24,27 @@ const Calls = () => {
     const [reasonValue, setReasonValue] = useState("")
     const [categoryValue, setCategoryValue] = useState("")
     
-    const [option, setOption] = useState("")
+    const [optionValue, setOptionValue] = useState("")
+    const [fromDateValue, setFromDateValue] = useState("")
+    const [toDateValue, setToDateValue] = useState("")
 
     const [callsFiltered, setCallsFiltered] = useState<CallsType[]>([])
  
     const handleFilterButton = () => {
+        
         setCallsFiltered(calls)
-        setCallsFiltered(prev => prev.filter(item => item.category === option))
+        if(optionValue !== ''){
+            setCallsFiltered(prev => prev.filter(item => item.category === optionValue))
+        }
+            
         setFilter(true)
+        
+        if(fromDateValue && toDateValue !== ''){
+            setCallsFiltered(prev => prev.filter(item => 
+            item.date >= fromDateValue 
+            &&
+            item.date <= toDateValue
+        ))}
     }
     const handleAddButton = () => {
        
@@ -135,11 +148,6 @@ const Calls = () => {
     if (!loaded) return
     localStorage.setItem("CallsStorage", JSON.stringify(calls))
     },[calls, loaded])
-
-    useEffect(() => {
-        console.log('array original', calls)
-        console.log('array filtrado', callsFiltered)
-    },[callsFiltered])
    
     return (
 
@@ -149,8 +157,12 @@ const Calls = () => {
                 titlePage={"ACOMPANHAMEN. DE CHAMADOS"}
 
                 filterBar={<FilterBar
-                    value={option}
-                    setValue={setOption}
+                    fromDateValue={fromDateValue}
+                    setFromDateValue={setFromDateValue}
+                    toDateValue={toDateValue}
+                    setToDateValue={setToDateValue}
+                    optionValue={optionValue}
+                    setOptionValue={setOptionValue}
                     selectedOptions={callOptions}
                     onFilter={handleFilterButton}
                 />}
